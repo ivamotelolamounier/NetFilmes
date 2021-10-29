@@ -1,4 +1,4 @@
-package com.ivamotelo.netfilmes
+package com.ivamotelo.netfilmes.presenter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

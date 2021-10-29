@@ -1,10 +1,11 @@
-package com.ivamotelo.netfilmes.repository
+package com.ivamotelo.netfilmes.implementations
 
 import android.util.Log
-import com.ivamotelo.netfilmes.api.MoviesRestApiTask
-import com.ivamotelo.netfilmes.model.Movies
+import com.ivamotelo.netfilmes.data.MoviesDataSource
+import com.ivamotelo.netfilmes.domain.Movies
+import com.ivamotelo.netfilmes.flameworks.api.MoviesRestApiTask
 
-class MoviesRepository(private val moviesRestApiTask: MoviesRestApiTask) {
+class MoviesDataSourceImplementations(private val moviesRestApiTask: MoviesRestApiTask) : MoviesDataSource {
 
     companion object {
         const val TAG = "MoviesRepository"
@@ -12,7 +13,7 @@ class MoviesRepository(private val moviesRestApiTask: MoviesRestApiTask) {
 
     private val moviesList = arrayListOf<Movies>()
 
-    fun getAllMovies() : List<Movies> {
+    override fun getAllMovies(): List<Movies> {
         val request = moviesRestApiTask.retrofitApi().getAllMovies().execute()
 
         if (request.isSuccessful) {
@@ -21,10 +22,9 @@ class MoviesRepository(private val moviesRestApiTask: MoviesRestApiTask) {
             }
         } else {
             request.errorBody()?.let {
-            Log.d(TAG, it.toString())
+                Log.d(TAG, it.toString())
             }
         }
         return moviesList
-
     }
 }

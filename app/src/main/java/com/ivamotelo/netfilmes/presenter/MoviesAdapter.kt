@@ -1,10 +1,11 @@
-package com.ivamotelo.netfilmes
+package com.ivamotelo.netfilmes.presenter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.ivamotelo.netfilmes.model.Movies
+import com.ivamotelo.netfilmes.R
+import com.ivamotelo.netfilmes.domain.Movies
 import kotlinx.android.synthetic.main.movie_item_layout.view.*
 
 class MoviesAdapter(private val moviesList: List<Movies>) : RecyclerView.Adapter<MoviesViewHolder>() {
@@ -16,10 +17,10 @@ class MoviesAdapter(private val moviesList: List<Movies>) : RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
         holder.itemView.apply {
-        movieTitle.text = moviesList[position].title
-        movieImage.load(moviesList[position].image) {
-            placeholder(R.drawable.ic_baseline_panorama_24)
-            fallback(R.drawable.ic_baseline_panorama_24)
+        movieTitle.text = moviesList[position].titulo
+        movieImage.load(moviesList[position].imagem) {
+            placeholder(R.drawable.ic_image)
+            fallback(R.drawable.ic_image)
             }
         }
     }

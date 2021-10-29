@@ -1,9 +1,10 @@
-package com.ivamotelo.netfilmes.api
+package com.ivamotelo.netfilmes.flameworks.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MoviesRestApiTask {
+
     companion object {
         const val BASE_URL = "https://raw.githubusercontent.com/"
     }
